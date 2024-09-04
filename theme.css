@@ -3,6 +3,12 @@
   --color-accent: #7e9d70;
   --color-background: #dee6db;
   --color-font: #798f70;
+  --color-red: #d1635f;
+  --color-green: #658159;
+  --color-purple:#8f709d;
+  --color-blue: #707e9d;
+  --color-orange: #c87e4e;
+  --color-grey: #868686;
 }
 
 body{
@@ -10,16 +16,40 @@ body{
 	color: var(--color-font);
 }
 
+header{
+  background-color: var(--color-background);
+}
+
+#username {
+  margin-right: 2em;
+  color: var(--color-font);
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+footer{
+	color: var(--color-font)
+}
+
+footer a{
+	color: var(--color-accent)
+}
+
+h1{
+  color: var(--color-accent);
+}
+
 /* FIELDSET */
 
 legend {
-    text-transform: uppercase;
+  text-transform: uppercase;
 	font-weight: bold;
 }
 
 /* OLIVETIN BUTTONS */
 
-action-button button {
+button {
 	background-color: var(--color-primary);
 	border: none;
 	color: var(--color-font);
@@ -28,12 +58,27 @@ action-button button {
 	box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.2);
 }
 
-action-button button:focus {
-	border: none;
+button:hover {
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-action-button button:focus {
-	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+button:focus {
+	border: 3px solid var(--color-accent);
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+div.display{
+	background-color: var(--color-primary);
+	border: 3px solid var(--color-accent);
+	color: var(--color-font);
+	font-weight: bold;
+	text-transform: uppercase;
+	box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.2);
+}
+
+div.display > strong{
+  color: var(--color-accent);
 }
 
 span.icon{
@@ -44,34 +89,43 @@ span.icon{
 
 nav.sidebar{
 	box-shadow: 0px 4px 5px 3px rgba(0,0,0,0.2);
-}
-
-.sidebar{
 	background-color: var(--color-primary);
 	color: var(--color-font);
 	font-weight: bold;
 	text-transform: uppercase;
 }
 
-nav ul li {
-    border-bottom: none;
+nav.sidebar a{
+	color: var(--color-font);
 }
 
-nav ul li a:hover{
+nav.sidebar ul li {
+  border-bottom: none;
+}
+
+nav.sidebar ul li a:hover{
 	background-color: var(--color-accent);
-	color: var(--color-background);
+	color: var(--color-primary);
+}
+
+nav ul li a:focus{
+	background-color: var(--color-accent);
+	color: var(--color-primary);
+  outline: 0;
 }
 
 #sidebar-toggler-button{
 	color: var(--color-background);
-    background-color: var(--color-accent);
-    border: none;
-    box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.2);
+  background-color: var(--color-accent);
+  border: none;
+  box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.2);
 	border-radius: 10%;
 }
 
 #sidebar-toggler-button:hover, #sidebar-toggler-button:focus {
-	color: var(--color-font);
+	color: var(--color-accent);
+  background-color: var(--color-background);
+  outline: 3px solid var(--color-accent);
 }
 
 h1 a, h1 a:visited{
@@ -80,22 +134,28 @@ h1 a, h1 a:visited{
 	text-decoration: none;
 }
 
+a:focus {
+  color: var(--color-background);
+  background-color: var(--color-accent);
+  outline: 2px solid var(--color-font);
+}
+
 /* POPUPS */
 
 form div.wrapper{
-    background-color: transparent;
+  background-color: transparent;
 }
 
 #argument-popup{
-    background-color: var(--color-primary);
-    color: var(--color-accent);
-    border-radius: 25px;
+  background-color: var(--color-primary);
+  color: var(--color-accent);
+  border-radius: 25px;
 }
 
 #execution-results-popup{
 	background-color: var(--color-primary);
-    color: var(--color-accent);
-    border-radius: 25px;
+  color: var(--color-accent);
+  border-radius: 25px;
 }
 
 pre#execution-dialog-stdout{
@@ -108,40 +168,49 @@ select {
 	color: var(--color-background);
 }
 
-/* BUTTONS */
-
-button, input[type="submit"]{
-    border-radius: 5px;
-    background-color: var(--color-primary);
-    color: var(--color-font);
-    border: 3px solid var(--color-accent);
-	box-shadow: 0 0 6px rgba(0, 0, 0, .3);
-}
-
-button:hover, input[type="submit"]:hover{
-	box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-}
-
-button:focus {
-  outline: 1px solid var(--color-accent);
-}
-
 /* START BUTTON */
 
-input[name="start"]:hover{
-    color: var(--color-background);
-    background-color: var(--color-accent);
+input[name=start], button[name=kill], button[name=Cancel], #execution-dialog-toggle-size{
+  color: var(--color-background);
+  background-color: var(--color-accent);
+  font-weight: bold;
+	text-transform: uppercase;
+  border: 0px;
+  border-radius: 5px;
+  box-shadow: none;
 }
 
-button:disabled, input[type="submit"]:disabled{
-    background-color: var(--color-dark);
+input[name="start"]:hover, input[name="start"]:focus{
+  color: var(--color-background);
+  background-color: var(--color-green);
+  transition: none;
+  outline: 3px solid var(--color-accent);
+  box-shadow: none;
+}
+
+/* DISABLED BUTTON */
+
+button:disabled, input[type="submit"]:disabled, button#searchLogsClear:disabled{
+  color: var(--color-background);
+  background-color: var(--color-grey);
+  box-shadow: none;
 }
 
 /* CANCEL BUTTON */
 
-button[name="cancel"]:hover{
-    color: var(--color-background);
-    background-color: var(--color-accent);
+button[name="cancel"]{
+  color: var(--color-background);
+  background-color: var(--color-accent);
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+button[name="cancel"]:hover, button[name="cancel"]:focus, button[name=kill]:hover,button[name=kill]:focus, button[name=Cancel]:hover, button[name=Cancel]:focus{
+  color: var(--color-background);
+  background-color: var(--color-red);
+  transition: none;
+  outline: 3px solid var(--color-accent);
+  box-shadow: none;
 }
 
 /* LOGS */
@@ -194,10 +263,12 @@ td a{
 }	
 
 input {
-	background-color: var(--color-accent);
-	color: var(--color-primary);
+	background-color: var(--color-background);
+	color: var(--color-font);
+  font-weight: bold;
 	border: 1px solid #cdcdcd;
 	border-color: rgba(178, 128, 126, .7);
+  outline: 1px solid var(--color-accent);
 }
 
 input#logSearchBox{
@@ -210,6 +281,7 @@ input#logSearchBox{
 	border: none;
 	border-color: rgba(178, 128, 126, .7);
 	border-radius: 50px;
+  outline: 1px solid var(--color-accent);
 }
 
 button#searchLogsClear{
@@ -219,37 +291,40 @@ button#searchLogsClear{
 	border-radius: 15px;
 }
 
+button#searchLogsClear:hover, button#searchLogsClear:focus{
+	background-color: var(--color-red);
+}
+
 ::placeholder{
 	color: transparent;
 }
 
 .action-failed {
-    transition: 1s;
-    background-color: transparent;
-    color: red;
-  }
-  
+  color: var(--color-background);
+  background-color: var(--color-red);
+}
+
 .action-success {
-    transition: 1s;
-    background-color: transparent;
-    color: limegreen;
+  color: var(--color-background);
+  background-color: var(--color-green);
 }
-  
+
 .action-nonzero-exit {
-    animation: kf-action-nonzero-exit 1s;
-    transition: 1s;
-    background-color: transparent;
-    color: orange;
+  color: var(--color-background);
+  background-color: var(--color-orange);
 }
-  
+
 .action-timeout {
-    transition: 1s;
-    background-color: transparent;
-    color: cyan;
+  color: var(--color-background);
+  background-color: var(--color-blue);
 }
-  
+
 .action-blocked {
-    transition: 1s;
-    background-color: transparent;
-    color: purple;
+  color: var(--color-background);
+  background-color: var(--color-purple);
+}
+
+span.tag{
+  color: var(--color-background);
+  background-color: var(--color-accent);
 }
